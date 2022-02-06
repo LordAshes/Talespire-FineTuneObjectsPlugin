@@ -22,15 +22,24 @@ Use R2ModMan or similar to install. Key binding can be set in the R2ModMan confi
 Select and object and then use the following keys to adjust the object position and orientation.
 
 ``Tilt Up`` = ``RCTRL`` + ``Home``
+
 ``Tilt Down`` = ``RCTRL`` + ``End``
+
 ``Tilt Left`` = ``RCTRL`` + ``PageUp``
+
 ``Tilt Right`` = ``RCTRL`` + ``PageDown``
 
+
 ``Shift Forward`` = ``RSHIFT`` + ``Home``
+
 ``Shift Backward`` = ``RSHIFT`` + ``End``
+
 ``Shift Left`` = ``RSHIFT`` + ``PageUp``
+
 ``Shift Right`` = ``RSHIFT`` + ``PageDown``
+
 ``Shift Up`` = ``RSHIFT`` + ``Insert``
+
 ``Shift Down`` = ``RSHIFT`` + ``Delete``
 
 After loading a board, apply any fine tune adjustments by pressing RCTRL+F.
