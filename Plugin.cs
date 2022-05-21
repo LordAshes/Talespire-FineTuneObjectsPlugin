@@ -13,7 +13,7 @@ namespace LordAshes
         // Plugin info
         public const string Name = "Fine Tune Object Plug-In";              
         public const string Guid = "org.lordashes.plugins.finetuneobjects";
-        public const string Version = "1.1.0.0";                    
+        public const string Version = "2.0.0.0";                    
 
         // Configuration
         private ConfigEntry<KeyboardShortcut>[] triggerKeys { get; set; }
@@ -34,7 +34,7 @@ namespace LordAshes
                 Config.Bind("Hotkeys", "Shift Left", new KeyboardShortcut(KeyCode.PageUp, KeyCode.RightShift)),
                 Config.Bind("Hotkeys", "Shift Right", new KeyboardShortcut(KeyCode.PageDown, KeyCode.RightShift)),
                 Config.Bind("Hotkeys", "Shift Up", new KeyboardShortcut(KeyCode.Insert, KeyCode.RightShift)),
-                Config.Bind("Hotkeys", "Shift Down", new KeyboardShortcut(KeyCode.Home, KeyCode.RightShift)),
+                Config.Bind("Hotkeys", "Shift Down", new KeyboardShortcut(KeyCode.Delete, KeyCode.RightShift)),
                 Config.Bind("Hotkeys", "Manual Re-Tune Objects", new KeyboardShortcut(KeyCode.F, KeyCode.RightControl))
             };
 
@@ -54,13 +54,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset!=null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            asset.CreatureLoaders[0].LoadedAsset.transform.position.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.z + ","
-                          + (asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x + 5) + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z);
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            Utility.GetAssetLoader(asset.CreatureId).transform.position.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.z + ","
+                          + (Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x + 5) + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z);
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[1].Value))
@@ -70,13 +70,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset != null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            asset.CreatureLoaders[0].LoadedAsset.transform.position.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.z + ","
-                          + (asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x - 5) + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z);
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            Utility.GetAssetLoader(asset.CreatureId).transform.position.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.z + ","
+                          + (Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x - 5) + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z);
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[2].Value))
@@ -86,13 +86,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset != null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            asset.CreatureLoaders[0].LoadedAsset.transform.position.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.z + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + (asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z + 5));
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            Utility.GetAssetLoader(asset.CreatureId).transform.position.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.z + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + (Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z + 5));
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[3].Value))
@@ -102,13 +102,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset != null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            asset.CreatureLoaders[0].LoadedAsset.transform.position.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.z + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + (asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z - 5));
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            Utility.GetAssetLoader(asset.CreatureId).transform.position.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.z + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + (Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z - 5));
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[4].Value))
@@ -118,13 +118,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset != null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            asset.CreatureLoaders[0].LoadedAsset.transform.position.x + ","
-                          + (asset.CreatureLoaders[0].LoadedAsset.transform.position.y + 0.1) + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.z + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z);
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            Utility.GetAssetLoader(asset.CreatureId).transform.position.x + ","
+                          + (Utility.GetAssetLoader(asset.CreatureId).transform.position.y + 0.1) + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.z + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z);
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[5].Value))
@@ -134,13 +134,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset != null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            asset.CreatureLoaders[0].LoadedAsset.transform.position.x + ","
-                          + (asset.CreatureLoaders[0].LoadedAsset.transform.position.y - 0.1) + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.z + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z);
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            Utility.GetAssetLoader(asset.CreatureId).transform.position.x + ","
+                          + (Utility.GetAssetLoader(asset.CreatureId).transform.position.y - 0.1) + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.z + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z);
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[6].Value))
@@ -150,13 +150,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset != null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            (asset.CreatureLoaders[0].LoadedAsset.transform.position.x - 0.1) + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.z + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z);
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            (Utility.GetAssetLoader(asset.CreatureId).transform.position.x - 0.1) + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.z + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z);
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[7].Value))
@@ -166,13 +166,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset != null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            (asset.CreatureLoaders[0].LoadedAsset.transform.position.x + 0.1) + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.z + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z);
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            (Utility.GetAssetLoader(asset.CreatureId).transform.position.x + 0.1) + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.z + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z);
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[8].Value))
@@ -182,13 +182,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset != null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            asset.CreatureLoaders[0].LoadedAsset.transform.position.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.y + ","
-                          + (asset.CreatureLoaders[0].LoadedAsset.transform.position.z + 0.1) + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z);
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            Utility.GetAssetLoader(asset.CreatureId).transform.position.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.y + ","
+                          + (Utility.GetAssetLoader(asset.CreatureId).transform.position.z + 0.1) + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z);
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[9].Value))
@@ -198,13 +198,13 @@ namespace LordAshes
                     CreaturePresenter.TryGetAsset(LocalClient.SelectedCreatureId, out asset);
                     if (asset != null)
                     {
-                        StatMessaging.SetInfo(asset.Creature.CreatureId, FineTuneObjectPlugin.Guid,
-                            asset.CreatureLoaders[0].LoadedAsset.transform.position.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.position.y + ","
-                          + (asset.CreatureLoaders[0].LoadedAsset.transform.position.z  - 0.1)+ ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.x + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.y + ","
-                          + asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles.z);
+                        StatMessaging.SetInfo(asset.CreatureId, FineTuneObjectPlugin.Guid,
+                            Utility.GetAssetLoader(asset.CreatureId).transform.position.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.position.y + ","
+                          + (Utility.GetAssetLoader(asset.CreatureId).transform.position.z  - 0.1)+ ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.x + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.y + ","
+                          + Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles.z);
                     }
                 }
                 else if (Utility.StrictKeyCheck(triggerKeys[10].Value))

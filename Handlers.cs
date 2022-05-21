@@ -20,12 +20,12 @@ namespace LordAshes
                         Debug.Log("Fine Tune Objects Plugin: " + change.cid + " => " + change.value);
                         CreatureBoardAsset asset;
                         CreaturePresenter.TryGetAsset(change.cid, out asset);
-                        if (asset != null && asset.CreatureLoaders[0] != null && asset.CreatureLoaders[0].LoadedAsset != null)
+                        if (asset != null && Utility.GetAssetLoader(asset.CreatureId) != null && Utility.GetAssetLoader(asset.CreatureId) != null)
                         {
                             Debug.Log("Fine Tune Objects Plugin: Applying " + change.cid + " => " + change.value);
                             string[] parts = change.value.Split(',');
-                            asset.CreatureLoaders[0].LoadedAsset.transform.position = new Vector3(float.Parse(parts[0]), float.Parse(parts[1]), float.Parse(parts[2]));
-                            asset.CreatureLoaders[0].LoadedAsset.transform.eulerAngles = new Vector3(float.Parse(parts[3]), float.Parse(parts[4]), float.Parse(parts[5]));
+                            Utility.GetAssetLoader(asset.CreatureId).transform.position = new Vector3(float.Parse(parts[0]), float.Parse(parts[1]), float.Parse(parts[2]));
+                            Utility.GetAssetLoader(asset.CreatureId).transform.eulerAngles = new Vector3(float.Parse(parts[3]), float.Parse(parts[4]), float.Parse(parts[5]));
                         }
                         else if (asset != null)
                         {
@@ -35,7 +35,7 @@ namespace LordAshes
                 }
                 else
                 {
-                    Debug.Log("Fine Tune Objects Plugin: Queuing Chaneg " + change.cid + " => " + change.value);
+                    Debug.Log("Fine Tune Objects Plugin: Queuing Change " + change.cid + " => " + change.value);
                     queue.AddRange(changes);
                 }
             }
